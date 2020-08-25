@@ -1,7 +1,7 @@
 const app = require("./app");
 
-const port = process.env.PORT || 8080;
-const host = process.env.HOSTNAME || "0.0.0.0";
+const port = process.env.PORT || 8888;
+const host = process.env.HOSTNAME || "localhost";
 
 // Launch Node.js server
 const server = app.listen(port, host, () => {
