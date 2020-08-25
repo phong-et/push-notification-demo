@@ -23,6 +23,7 @@ function handlePushNotificationSubscription(req, res) {
 }
 
 function sendPushNotification(req, res) {
+  console.log(subscriptions)
   const subscriptionId = req.params.id;
   const pushSubscription = subscriptions[subscriptionId];
   webpush
@@ -39,8 +40,32 @@ function sendPushNotification(req, res) {
     .catch(err => {
       console.log(err);
     });
-
+  res.status(202).json({})
+}
+function sendPushNotificationToOne(req, res, subscription) {
+  webpush
+    .sendNotification(
+      subscription,
+      JSON.stringify({
+        title: "New Product Available ",
+        text: "HEY! Take a look at this brand new t-shirt!",
+        image: "/images/jason-leung-HM6TMmevbZQ-unsplash.jpg",
+        tag: "new-product",
+        url: "/new-product-jason-leung-HM6TMmevbZQ-unsplash.html"
+      })
+    )
+    .catch(err => {
+      console.log(err);
+    })
+  //res.status(202).json({})
+}
+async function sendPushNotificationToAll(req, res) {
+  console.log('subscriptions')
+  for (let subscriptionId in subscriptions) {
+    console.log(subscriptions[subscriptionId])
+    await sendPushNotificationToOne(req, res, subscriptions[subscriptionId])
+  }
   res.status(202).json({});
 }
 
-module.exports = { handlePushNotificationSubscription, sendPushNotification };
+module.exports = { handlePushNotificationSubscription, sendPushNotification, sendPushNotificationToAll };
