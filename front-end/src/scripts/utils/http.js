@@ -1,5 +1,5 @@
-const host = process.env.PUSH_SERVER_URL;
-
+//const host = process.env.PUSH_SERVER_URL;
+const host = "https://ata-push-api.herokuapp.com"; // "http://localhost:8888";
 function post(path, body) {
   return fetch(`${host}${path}`, {
     credentials: "omit",

@@ -19,7 +19,9 @@ npm start
 
 ### Build Prod Version
 
+
 ```
+npm install -g win-node-env
 npm run build
 ```
 

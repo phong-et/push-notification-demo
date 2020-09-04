@@ -19,7 +19,7 @@ async function askUserPermission() {
 function sendNotification() {
   const img = "/images/jason-leung-HM6TMmevbZQ-unsplash.jpg";
   const text = "Take a look at this brand new t-shirt!";
-  const title = "New Product Available";
+  const title = "HAVE YOU CHECKED IN YET";
   const options = {
     body: text,
     icon: "/images/jason-leung-HM6TMmevbZQ-unsplash.jpg",
@@ -27,7 +27,8 @@ function sendNotification() {
     tag: "new-product",
     image: img,
     badge: "https://spyna.it/icons/android-icon-192x192.png",
-    actions: [{ action: "Detail", title: "View", icon: "https://via.placeholder.com/128/ff0000" }]
+    actions: [{ action: "Detail", title: "Close", icon: "https://via.placeholder.com/128/ff0000" }],
+    requireInteraction: true
   };
   navigator.serviceWorker.ready.then(function(serviceWorker) {
     serviceWorker.showNotification(title, options);

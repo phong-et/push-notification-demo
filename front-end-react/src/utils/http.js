@@ -1,4 +1,6 @@
-const host = process.env.NODE_ENV === "production" ? "https://push-notification-demo-server.herokuapp.com" : "http://localhost:8888";
+//const host = process.env.NODE_ENV === "production" ? "https://push-notification-demo-server.herokuapp.com" : "https://ata-push-api.herokuapp.com"; // "http://localhost:8888";
+//const host = "https://ata-push-api.herokuapp.com";
+const host = "http://localhost:8888";
 
 function post(path, body) {
   return fetch(`${host}${path}`, {
@@ -8,10 +10,10 @@ function post(path, body) {
     method: "POST",
     mode: "cors"
   })
-    .then(function(response) {
+    .then(function (response) {
       return response.json();
     })
-    .then(function(data) {
+    .then(function (data) {
       return data;
     });
 }
@@ -23,10 +25,10 @@ function get(path) {
     method: "GET",
     mode: "cors"
   })
-    .then(function(response) {
+    .then(function (response) {
       return response.json();
     })
-    .then(function(data) {
+    .then(function (data) {
       return data;
     });
 }
